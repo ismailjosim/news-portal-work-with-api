@@ -17,21 +17,19 @@ const navigationFn = id => {
 }
 
 
-
-const navLinks = document.querySelectorAll('.nav-link');
-
 // display all blog
 const displayBlogPost = (data) => {
-
     let countPost = [];
+    const newsBox = document.getElementById('news-box');
+    newsBox.innerHTML = '';
     for (const post of data) {
         countPost.push(post);
+
         // Destructure
         const { author, category_id, details, image_url, others_info, rating, thumbnail_url, title, total_view } = post;
         const { img, name, published_date } = author;
+        console.log(image_url);
 
-        // console.log(post);
-        const newsBox = document.getElementById('news-box');
         const col = document.createElement('div');
         col.classList.add('col-md-12');
         col.innerHTML = `
@@ -71,6 +69,7 @@ const displayBlogPost = (data) => {
     // show categories item and categories name
     const itemNumberEl = document.getElementById('items-number');
     const categoryNameEl = document.getElementById("categories-name");
+
     itemNumberEl.textContent = countPost.length;
 }
 
