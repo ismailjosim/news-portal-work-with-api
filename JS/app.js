@@ -36,16 +36,17 @@ const displayBlogPost = async () => {
 
     const data = await loadBlogPosts();
     const allPost = data.data;
-    // const uniqueArray = [];
+
+    let countPost = [];
     for (const post of allPost) {
+
+        countPost.push(post);
+
         // Destructure
         const { author, category_id, details, image_url, others_info, rating, thumbnail_url, title, total_view } = post;
-
-        // other assets
         const { img, name, published_date } = author;
 
-
-        // console.log(post);
+        console.log(post);
         const newsBox = document.getElementById('news-box');
         const col = document.createElement('div');
         col.classList.add('col-md-12');
@@ -58,8 +59,8 @@ const displayBlogPost = async () => {
                         </div>
                         <div class="col p-4 d-flex flex-column position-static">
                             <strong class="d-inline-block mb-2 text-primary">World</strong>
-                            <h3 class="mb-0">${ title.length > 50 ? title.slice(0, 50) + '...' : title }</h3>
-                            <div class="mb-1 text-muted">Nov 12</div>
+                            <h3 class="mb-0">${ title.length > 50 ? title.slice(0, 48) + '...' : title }</h3>
+                            <div class="mb-1 text-muted">${ published_date }</div>
                             <p class="card-text mb-auto">${ details.length > 300 ? details.slice(0, 250) + '...' : details }</p>
 
                             <div class="d-flex justify-content-between align-items-center">
@@ -83,6 +84,10 @@ const displayBlogPost = async () => {
         newsBox.appendChild(col);
 
     }
+    // show categories item and categories name
+    const itemNumberEl = document.getElementById('items-number');
+    const categoryNameEl = document.getElementById("categories-name");
+    itemNumberEl.textContent = countPost.length;
 }
 
 // Show all Catagories
