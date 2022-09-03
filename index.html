@@ -80,13 +80,13 @@
         <!-- Section categories -->
         <section id="categories">
             <!-- categories -->
-            <ul id="catagories-items" class="nav nav-justified">
+            <ul id="catagories-items" class="nav d-flex justify-content-between">
                 <!-- catagories item will append here from JS -->
             </ul>
             <!-- found items -->
             <div id="count-items" class="py-3">
-                <p><strong id="items-number">0</strong> items found for category Entertainment <strong
-                        id="categories-name"></strong></p>
+                <p><strong id="items-number">0</strong> items found in category: <strong id="categories-name"></strong>
+                </p>
             </div>
         </section>
         <!-- section: news body -->
@@ -115,6 +115,23 @@
         <section id="news-container" class="my-5">
             <div id="news-box" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <!-- News goes here. -->
+            </div>
+        </section>
+        <!-- modal section -->
+        <section>
+            <!-- Modal -->
+            <div class="modal fade" id="blogDetailsModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" id="modal-body-content">
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -150,7 +167,6 @@
             </ul>
         </footer>
     </div>
-
 
     <!-- LINK: Bootstrap & custom Script JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"

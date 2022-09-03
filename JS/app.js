@@ -7,17 +7,16 @@ const loadAllCatagories = async () => {
 }
 
 // set catagories items
-const displayLoadCatagories = async () => {
+const displayCatagories = async () => {
 
     const data = await loadAllCatagories();
     const categoryItems = data.data.news_category;
     for (const item of categoryItems) {
         const AllItemsEl = document.getElementById('catagories-items');
         const li = document.createElement('li');
-
         li.classList.add('nav-item');
         li.innerHTML = `
-        <a class="btn" onclick ="navigationFn('${ item.category_id }')">
+        <a class="btn btn-outline-warning fw-semibold" onclick="loadAllBlogs('${ item.category_id }')">
         ${ item.category_name }
         </a>`;
 
@@ -27,7 +26,7 @@ const displayLoadCatagories = async () => {
 }
 
 // Show all Catagories
-displayLoadCatagories();
+displayCatagories();
 
 
 

@@ -1,19 +1,9 @@
-// load all blog post
-// const navigationFn = async (id) => {
-
-
-
-//     const url = `https://openapi.programming-hero.com/api/news/category/${ id }`;
-//     const res = await fetch(url);
-//     const data = await res.json();
-//     displayBlogPost(data);
-// }
-
-const navigationFn = id => {
-    const url = `https://openapi.programming-hero.com/api/news/category/${ id }`
+// load All Blogs data
+const loadAllBlogs = id => {
+    const url = `https://openapi.programming-hero.com/api/news/category/${ id }`;
     fetch(url)
         .then(res => res.json())
-        .then(data => displayBlogPost(data.data))
+        .then(data => displayBlogPost(data.data));
 }
 
 
@@ -24,12 +14,9 @@ const displayBlogPost = (data) => {
     newsBox.innerHTML = '';
     for (const post of data) {
         countPost.push(post);
-
         // Destructure
-        const { author, category_id, details, image_url, others_info, rating, thumbnail_url, title, total_view } = post;
+        const { author, details, image_url, thumbnail_url, title, total_view } = post;
         const { img, name, published_date } = author;
-        console.log(image_url);
-
         const col = document.createElement('div');
         col.classList.add('col-md-12');
         col.innerHTML = `
@@ -44,7 +31,6 @@ const displayBlogPost = (data) => {
                             <h3 class="mb-0">${ title.length > 50 ? title.slice(0, 48) + '...' : title }</h3>
                             <div class="mb-1 text-muted">${ published_date }</div>
                             <p class="card-text mb-auto">${ details.length > 300 ? details.slice(0, 250) + '...' : details }</p>
-
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="stretched-link">
                                     <img width="50" class="rounded-circle d-inline-block"
@@ -54,53 +40,41 @@ const displayBlogPost = (data) => {
                                 <div>
                                     <img src="images/eye.svg" width="25">
                                     <span class="fs-6 ms-1">${ total_view }</span>
-
                                 </div>
                                 <div>
-                                    <a href="#" class="stretched-link">Continue reading</a>
+                                    <a class="stretched-link" onclick="loadBlogs('${ img }', '${ name }','${ title }','${ image_url }')" data-bs-toggle="modal" data-bs-target="#blogDetailsModal">Continue reading</a>
+
                                 </div>
                             </div>
                         </div>
                     </div>`;
 
         newsBox.appendChild(col);
-
     }
     // show categories item and categories name
     const itemNumberEl = document.getElementById('items-number');
-    const categoryNameEl = document.getElementById("categories-name");
-
     itemNumberEl.textContent = countPost.length;
 }
 
-// displayBlogPost();
 
 
+//,'${ author }','${ total_view }'
 
 
+const loadBlogs = (img, name, title, image_url) => {
+    const modalBody = document.getElementById('modal-body-content');
+    modalBody.innerHTML = '';
+    const modalTitle = document.getElementById('modalLabel');
+    const card = document.createElement('div');
+    card.classList.add('card');
+    modalTitle.innerText = title;
 
+    card.innerHTML = `
+    <img src="${ image_url }" class="card-img-top" alt="">
+    <div class="card-body">
+     </div>
+    `
 
-
-
-/*
-/const showDetails = async (categoryId, objectId) => {
-    console.log(categoryId);
-    console.log(objectId);
-
-
-
-    try {
-        const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`;
-        const response = await fetch(url);
-        const news = await response.json();
-        showModal(news.data,objectId);
-
-    }
-
-    catch (error) {
-        console.log(error);
-    }
-
-
+    modalBody.appendChild(card);
 }
-*/
+
