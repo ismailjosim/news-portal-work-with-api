@@ -1,0 +1,27 @@
+ body {
+     font-family: 'Poppins', sans-serif;
+ }
+
+ .navbar-brand img {
+     width: 50px;
+ }
+
+ .admin-logo {
+     width: 25px;
+ }
+
+ a {
+     color: #6c757d !important;
+ }
+
+ #main {
+     min-height: calc(100vh - 81px - 81px);
+ }
+
+ @media only screen and (max-width: 600px) {
+
+     #thumbnail_image {
+         width: 450px !important;
+     }
+
+ }

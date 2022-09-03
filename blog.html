@@ -19,25 +19,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .navbar-brand img {
-            width: 50px;
-        }
-
-        .admin-logo {
-            width: 25px;
-        }
-
-        a {
-            color: #6c757d !important;
-        }
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="CSS/style.css">
 </head>
 
 <body>
@@ -79,91 +61,168 @@
     <!-- MAIN section start -->
     <main class="container">
         <h1 class="text-center">Top Interview Questions Answer</h1>
-        <section id="news-body" class="d-flex justify-content-between">
-            <div class="accordion" id="accordionExample">
+        <section class="my-5 container text-start">
+
+            <div class="accordion" id="accordionPanelsStayOpenExample">
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Q-01: Different Between Var, let and Const?
+                            data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                            aria-controls="panelsStayOpen-collapseOne">
+                            <h5 class="text-dark fw-bold">What is the difference between of var,let and const?</h5>
                         </button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                        data-bs-parent="#accordionExample">
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                        aria-labelledby="panelsStayOpen-headingOne">
                         <div class="accordion-body">
-                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the
-                            collapse
-                            plugin adds the appropriate classes that we use to style each element. These classes control
-                            the overall
-                            appearance, as well as the showing and hiding via CSS transitions. You can modify any of
-                            this with
-                            custom CSS or overriding our default variables. It's also worth noting that just about any
-                            HTML can go
-                            within the <code>.accordion-body</code>, though the transition does limit overflow.
+                            <p>
+                                In Javascript, we can declare variables using 3 keywords. They are <strong
+                                    class="text-danger">VAR</strong>,
+                                <strong class="text-danger">LET </strong>& <strong class="text-danger">CONST</strong>.
+                                They both declare variables but
+                                they are different from each other. So, Let's talk about what's the differences between
+                                VAR, LET & CONST:
+                            </p>
+                            <p class="my-3 lh-lg">
+                                <span
+                                    class="text-danger fw-semibold border-2 border-bottom border-warning text-bg-light">Var
+                                    keyword</span>:-
+                                Global
+                                scoped
+                                or
+                                function
+                                scoped. The scope of the var keyword is the global or function scope. It means variables
+                                defined
+                                outside the function can be accessed globally, and variables defined inside a particular
+                                function can be accessed within the function. Variables that are declared with var
+                                keyword have function scope. Function scoped here means that they can be accessed
+                                only inside the function in which they are declared.
+                            </p>
+                            <p class="my-3 lh-lg">
+                                <span
+                                    class="text-danger fw-semibold border-2 border-bottom border-warning text-bg-light">Let
+                                    keyword:</span>
+
+                                let is the improved version of var. let eliminates all the issues of var. let has a
+                                similar syntax to var but has a more
+                                strict scope. The let keyword should be used in situations where you want to declare a
+                                variable that should be
+                                restricted to the block in which it is restricted. Also, variables declared with the let
+                                keyword cannot be updated or
+                                re-declared. Here is an example of how to use let to declare variables in JavaScript:
+                                Another thing to consider is that
+                                let cannot be used before its declaration. If you do so, it will result in a
+                                ReferenceError.
+                            </p>
+
+                            <p class="my-3 lh-lg">
+                                <span
+                                    class="text-danger fw-semibold border-2 border-bottom border-warning text-bg-light">Const
+                                    keyword</span> The const
+                                keyword has
+                                all the properties that are the same as the let keyword, except the user cannot update
+                                it.
+                                Scope: block scoped: When users declare a const variable, they need to initialize it,
+                                otherwise,
+                                it returns an error. The user cannot update the const variable once it is declared.
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Q-02: Advantages of template strings?
+                            data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                            aria-controls="panelsStayOpen-collapseTwo">
+                            <h5>Differences between Arrow Function & Regular Functions.</h5>
                         </button>
                     </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                        data-bs-parent="#accordionExample">
+                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                        aria-labelledby="panelsStayOpen-headingTwo">
                         <div class="accordion-body">
-                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until
-                            the collapse
-                            plugin adds the appropriate classes that we use to style each element. These classes control
-                            the overall
-                            appearance, as well as the showing and hiding via CSS transitions. You can modify any of
-                            this with
-                            custom CSS or overriding our default variables. It's also worth noting that just about any
-                            HTML can go
-                            within the <code>.accordion-body</code>, though the transition does limit overflow.
+                            <p>
+                                In simple way A function is a block of code that performs a specific task. Functions are
+                                one of the fundamental building
+                                blocks in JavaScript. A function in JavaScript is similar to a procedure—a set of
+                                statements that performs a task or
+                                calculates a value, but for a procedure to qualify as a function, it should take some
+                                input and return an output where
+                                there is some obvious relationship between the input and the output. There are 3 ways of
+                                writing a function in
+                                JavaScript: Function Declaration. Function Expression. Arrow Function. Lets' discuss
+                                differences between Arrow and
+                                Regular Functions.
+                            </p>
+                            <p class="my-3 lh-lg">
+                                <span
+                                    class="text-danger fw-bold border-2 border-bottom border-warning text-bg-light">this
+                                    value</span>:Inside of a regular JavaScript function, this value (aka the execution
+                                context) is dynamic but The behavior of this inside of an arrow function differs
+                                considerably from the regular function's this behavior. The
+                                arrow function doesn't define its own execution context.
+
+                            </p>
+                            <p class="my-3 lh-lg">
+                                <span
+                                    class="text-danger fw-bold border-2 border-bottom border-warning text-bg-light">Constructors</span>:
+                                The
+                                regular function can easily construct objects. on the other hand A consequence of this
+                                resolved lexically is that an arrow function cannot be used as a constructor. If we try
+                                to invoke an arrow function prefixed with new keyword, JavaScrip will throws an error:
+
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Q-03: Difference between arrow function and regular function?
+                            data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                            aria-controls="panelsStayOpen-collapseThree">
+                            <h5>Why should we use template literal? </h5>
                         </button>
                     </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                        data-bs-parent="#accordionExample">
+                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+                        aria-labelledby="panelsStayOpen-headingThree">
                         <div class="accordion-body">
-                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
-                            collapse
-                            plugin adds the appropriate classes that we use to style each element. These classes control
-                            the overall
-                            appearance, as well as the showing and hiding via CSS transitions. You can modify any of
-                            this with
-                            custom CSS or overriding our default variables. It's also worth noting that just about any
-                            HTML can go
-                            within the <code>.accordion-body</code>, though the transition does limit overflow.
+                            <p>
+                                Template literals provide an easy way to interpolate variables and expressions into
+                                strings. The method is called string
+                                interpolation. Template literals are sometimes informally called template strings,
+                                because they are used most commonly for string
+                                interpolation (to create strings by doing substitution of placeholders). However, a
+                                tagged template literal may not
+                                result in a string; it can be used with a custom tag function to perform whatever
+                                operations you want on the different
+                                parts of the template literal. some of benefits using template literal is follows:
+                            </p>
+                            <ol class="my-3 lh-lg">
+                                <li>Template literals allow variables in strings</li>
+                                <li>Automatic replacing of variables with real values is called string interpolation.
+                                </li>
+                                <li>
+                                    Template literals allow expressions in strings:
+                                </li>
+                                <li>Automatic replacing of expressions with real values is called string interpolation.
+                                </li>
+                                <li>Template Literals is an ES6 feature (JavaScript 2015). It is supported in all modern
+                                    browsers except in Internet Explorer.</li>
+                            </ol>
                         </div>
                     </div>
                 </div>
             </div>
-
         </section>
         <!-- section: news card -->
     </main>
     <!-- MAIN section  Ends -->
 
     <!-- footer section start -->
+    <hr>
     <div class="container">
-        <footer class="d-flex flex-wrap justify-content-around align-items-center py-3 my-4 border-top fixed-bottom">
+        <footer class="d-flex flex-wrap justify-content-around align-items-center mt-2 py-5" id="footer">
             <div class="col-md-4 d-flex align-items-center">
-                <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-                    <svg class="bi" width="30" height="24">
-                        <use xlink:href="#bootstrap"></use>
-                    </svg>
-                </a>
-                <span class="mb-3 mb-md-0 text-muted">News Today Ltd. © 1998 - 2022. All Right Reserved. </span>
+                <span class="text-muted"><strong>News Today</strong> Ltd. © 1998 - 2022. All Right Reserved. </span>
             </div>
 
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
