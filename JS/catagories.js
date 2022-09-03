@@ -26,9 +26,7 @@ const displayBlogPost = (data, name) => {
         const { img, name, published_date } = author;
         const col = document.createElement('div');
         col.classList.add('col-md-12');
-        col.innerHTML = `
-                    <div
-                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        col.innerHTML = `<div class="row g-0 border rounded flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                         <div class="col-auto d-lg-block">
                             <img src="${ thumbnail_url }" class="card-img-top" alt="">
                         </div>
@@ -40,11 +38,11 @@ const displayBlogPost = (data, name) => {
                                 <div>
                                     <img width="50" class="rounded-circle d-inline-block"
                                         src="${ img }">
-                                    <span class="fs-6 fw-semibold ms-2">${ name }</span>
+                                    <span class="fs-6 fw-semibold ms-2">${ name ? name : "Name not Found!" }</span>
                                 </div>
                                 <div>
                                     <img src="images/eye.svg" width="25">
-                                    <span class="fs-6 ms-1">${ total_view }</span>
+                                    <span class="fs-6 ms-1">${ total_view ? total_view : "No View" }</span>
                                 </div>
                                 <div>
                                     <button onclick="detailsNews('${ _id }')" type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">learn More</button>
@@ -77,10 +75,10 @@ const loadBlogs = (newDetails) => {
     modalBody.innerHTML = '';
     card.classList.add('card');
     card.innerHTML = `
-        <img src="${ image_url }" class="card-img-top" alt="...">
+        <img src="${ image_url ? image_url : "Image not Found!" }" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title fw-semibold py-2">${ title }</h5>
-            <p class="card-text">${ newDetails.details }</p>
+            <h5 class="card-title fw-semibold py-2">${ title ? title : "title not Found!" }</h5>
+            <p class="card-text">${ details ? details : "Details not Found!" }</p>
         </div>`;
     modalBody.appendChild(card);
 };
@@ -95,4 +93,5 @@ const toggleLoader = isLoading => {
 }
 
 
-loadAllBlogs('08');
+loadAllBlogs('02');
+// newsData.title ? newsData.title : "No Title Found"
