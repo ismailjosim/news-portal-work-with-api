@@ -72,18 +72,38 @@ const detailsNews = async (newsId) => {
 };
 
 const loadBlogs = (newDetails) => {
-    const { author, _id, details, image_url, thumbnail_url, title, total_view } = newDetails;
+    const { author, details, image_url, title, total_view } = newDetails;
     const { img, name, published_date } = author;
+
+    const publishedDay = new Date(published_date);;
+    let day = publishedDay.getDay();
+
     const modalBody = document.getElementById('modal-inner-body');
     const card = document.createElement('div');
     modalBody.innerHTML = '';
     card.classList.add('card');
     card.innerHTML = `
         <img src="${ image_url ? image_url : "Image not Found!" }" class="card-img-top" alt="...">
+        <div class="d-flex justify-content-around align-items-center gx-md-5 py-3">
+                <p class="m-2 text-muted">0${ day } Days Ago</p>
+                <div>
+                    <img width="50" class="rounded-circle d-inline-block" src="${ img }">
+                    <span class="fw-semibold ms-2">${ name ? name : "Name not Found!" }</span>
+                </div>
+                <div>
+                    <img src="images/eye.svg" width="25">
+                    <span class="fs-6 ms-1">${ total_view ? total_view : "No View" }</span>
+                </div>
+
+            </div>
         <div class="card-body">
             <h5 class="card-title fw-semibold py-2">${ title ? title : "title not Found!" }</h5>
             <p class="card-text">${ details ? details : "Details not Found!" }</p>
-        </div>`;
+        </div>
+
+
+
+        `;
     modalBody.appendChild(card);
 };
 //====> add / remove spinner class function
@@ -98,5 +118,4 @@ const toggleLoader = isLoading => {
 
 
 loadAllBlogs('01');
-// newsData.title ? newsData.title : "No Title Found"
 
