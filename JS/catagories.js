@@ -1,15 +1,22 @@
 // load All Blogs data
-const loadAllBlogs = id => {
+const loadAllBlogs = (id, name) => {
     const url = `https://openapi.programming-hero.com/api/news/category/${ id }`;
     fetch(url)
         .then(res => res.json())
-        .then(data => displayBlogPost(data.data));
+        .then(data => displayBlogPost(data.data, name));
+
+
 }
 
 // display all blog
-const displayBlogPost = (data) => {
+const displayBlogPost = (data, name) => {
+
     let countPost = [];
     const newsBox = document.getElementById('news-box');
+    const categoryName = document.getElementById('categories-name');
+    categoryName.textContent = name;
+
+
     newsBox.innerHTML = '';
     data.forEach(news => {
         // push new items
@@ -27,7 +34,6 @@ const displayBlogPost = (data) => {
                             <img src="${ thumbnail_url }" class="card-img-top" alt="">
                         </div>
                         <div class="col p-4 d-flex flex-column position-static">
-                            <strong class="d-inline-block mb-2 text-primary">World</strong>
                             <h3 class="mb-0">${ title.length > 50 ? title.slice(0, 48) + '...' : title }</h3>
                             <div class="mb-1 text-muted">${ published_date }</div>
                             <p class="card-text mb-auto">${ details.length > 300 ? details.slice(0, 250) + '...' : details }</p>
