@@ -37,6 +37,16 @@
             color: #6c757d !important;
         }
 
+        #main {
+            min-height: calc(100vh - 81px - 81px);
+        }
+
+        @media only screen and (max-width: 600px) {
+            #thumbnail_image {
+                width: 450px !important;
+            }
+        }
+
     </style>
 </head>
 
@@ -77,16 +87,17 @@
         <hr>
     </header>
     <!-- MAIN section start -->
-    <main class="container">
+    <main class="container" id="main">
         <!-- Section categories -->
         <section id="categories">
             <!-- categories -->
-            <ul id="catagories-items" class="nav justify-content-between">
+            <ul id="catagories-items" class="nav gap-3 justify-content-center">
                 <!-- catagories item will append here from JS -->
             </ul>
             <!-- found items -->
             <div id="count-items" class="py-5">
-                <h3><strong id="items-number">0</strong> items found in category: <strong id="categories-name"></strong>
+                <h3 class="text-center"><strong id="items-number">0</strong> items found in category: <strong
+                        id="categories-name"></strong>
                 </h3>
             </div>
         </section>
@@ -151,7 +162,7 @@
     <!-- MAIN section  Ends -->
     <!-- footer section start -->
     <div class="container">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <footer class="d-flex flex-wrap justify-content-around align-items-center py-3 my-4 border-top" id="footer">
             <div class="col-md-4 d-flex align-items-center">
                 <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
                     <svg class="bi" width="30" height="24">
@@ -164,17 +175,17 @@
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
                 <li class="ms-3">
                     <a href="#">
-                        <img width="25" src="images/facebook.png" alt="">
+                        <img width="25" src="images/facebook.png" alt="facebook">
                     </a>
                 </li>
                 <li class="ms-3">
                     <a href="#">
-                        <img width="25" src="images/twitter.png" alt="">
+                        <img width="25" src="images/twitter.png" alt="twitter">
                     </a>
                 </li>
                 <li class="ms-3">
                     <a href="#">
-                        <img width="25" src="images/github.png" alt="">
+                        <img width="25" src="images/github.png" alt="github">
                     </a>
                 </li>
             </ul>

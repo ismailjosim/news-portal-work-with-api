@@ -24,17 +24,21 @@ const displayBlogPost = (data, name) => {
         // Destructure
         const { author, _id, details, image_url, thumbnail_url, title, total_view } = news;
         const { img, name, published_date } = author;
+        const publishedDay = new Date(published_date);;
+        let day = publishedDay.getDay();
+
+
         const col = document.createElement('div');
         col.classList.add('col-md-12');
-        col.innerHTML = `<div class="row g-0 border rounded flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                        <div class="col-auto d-lg-block">
-                            <img src="${ thumbnail_url }" class="card-img-top" alt="">
+        col.innerHTML = `<div class="row g-0 border rounded flex-md-row mb-4 shadow-sm h-md-250">
+                        <div class="col-auto d-block">
+                            <img src="${ thumbnail_url }" class="img-fluid" id="thumbnail_image">
                         </div>
                         <div class="col p-4 d-flex flex-column position-static">
                             <h3 class="mb-0">${ title.length > 50 ? title.slice(0, 48) + '...' : title }</h3>
-                            <div class="mb-1 text-muted">${ published_date }</div>
+                            <div class="my-2 text-muted">0${ day } Days Ago</div>
                             <p class="card-text mb-auto">${ details.length > 300 ? details.slice(0, 250) + '...' : details }</p>
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center gx-md-5">
                                 <div>
                                     <img width="50" class="rounded-circle d-inline-block"
                                         src="${ img }">
@@ -93,5 +97,6 @@ const toggleLoader = isLoading => {
 }
 
 
-loadAllBlogs('02');
+loadAllBlogs('01');
 // newsData.title ? newsData.title : "No Title Found"
+
