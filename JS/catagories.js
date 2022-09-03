@@ -1,10 +1,16 @@
 // load All Blogs data
-const loadAllBlogs = (id, name) => {
-    const url = `https://openapi.programming-hero.com/api/news/category/${ id }`;
+const loadAllBlogs = async (id, name) => {
     toggleLoader(true);
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displayBlogPost(data.data, name));
+    const url = `https://openapi.programming-hero.com/api/news/category/${ id }`;
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        displayBlogPost(data.data, name);
+    }
+    catch (error) {
+        console.log('Error');
+    }
+    toggleLoader(false);
 }
 
 // display all blog
@@ -14,7 +20,6 @@ const displayBlogPost = (data, name) => {
     const newsBox = document.getElementById('news-box');
     const categoryName = document.getElementById('categories-name');
     categoryName.textContent = name;
-
 
     newsBox.innerHTML = '';
     data.sort((s1, s2) => s2.total_view - s1.total_view).forEach(news => {
@@ -26,7 +31,6 @@ const displayBlogPost = (data, name) => {
         const { img, name, published_date } = author;
         const publishedDay = new Date(published_date);;
         let day = publishedDay.getDay();
-
 
         const col = document.createElement('div');
         col.classList.add('col-md-12');
@@ -55,8 +59,8 @@ const displayBlogPost = (data, name) => {
                             </div>
                         </div>
                     </div>`;
-        newsBox.appendChild(col);
 
+        newsBox.appendChild(col);
     })
     toggleLoader(false);
     // show categories item and categories name
@@ -64,12 +68,21 @@ const displayBlogPost = (data, name) => {
     itemNumberEl.textContent = countPost.length;
 }
 
-const detailsNews = async (newsId) => {
+//=====> Modal Data API ID
+const detailsNews = async newsId => {
     const url = `https://openapi.programming-hero.com/api/news/${ newsId }`;
-    const res = await fetch(url);
-    const data = await res.json();
-    loadBlogs(data.data[0]);
-};
+
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        loadBlogs(data.data[0]);
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+
 
 const loadBlogs = (newDetails) => {
     const { author, details, image_url, title, total_view } = newDetails;
@@ -100,12 +113,10 @@ const loadBlogs = (newDetails) => {
             <h5 class="card-title fw-semibold py-2">${ title ? title : "title not Found!" }</h5>
             <p class="card-text">${ details ? details : "Details not Found!" }</p>
         </div>
-
-
-
         `;
     modalBody.appendChild(card);
 };
+
 //====> add / remove spinner class function
 const toggleLoader = isLoading => {
     const loaderSection = document.getElementById('display-loader');
@@ -116,6 +127,5 @@ const toggleLoader = isLoading => {
     }
 }
 
-
+//=======> Default Display
 loadAllBlogs('01');
-

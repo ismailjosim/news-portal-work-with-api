@@ -5,10 +5,8 @@ const loadAllCatagories = async () => {
     const data = await res.json();
     return data;
 }
-
 // set catagories items
 const displayCatagories = async () => {
-
     const data = await loadAllCatagories();
     const categoryItems = data.data.news_category;
     for (const item of categoryItems) {
