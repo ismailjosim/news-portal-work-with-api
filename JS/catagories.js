@@ -1,11 +1,10 @@
 // load All Blogs data
 const loadAllBlogs = (id, name) => {
     const url = `https://openapi.programming-hero.com/api/news/category/${ id }`;
+    toggleLoader(true);
     fetch(url)
         .then(res => res.json())
         .then(data => displayBlogPost(data.data, name));
-
-
 }
 
 // display all blog
@@ -18,7 +17,7 @@ const displayBlogPost = (data, name) => {
 
 
     newsBox.innerHTML = '';
-    data.forEach(news => {
+    data.sort((s1, s2) => s2.total_view - s1.total_view).forEach(news => {
         // push new items
         countPost.push(news);
 
@@ -38,7 +37,7 @@ const displayBlogPost = (data, name) => {
                             <div class="mb-1 text-muted">${ published_date }</div>
                             <p class="card-text mb-auto">${ details.length > 300 ? details.slice(0, 250) + '...' : details }</p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <div class="stretched-link">
+                                <div>
                                     <img width="50" class="rounded-circle d-inline-block"
                                         src="${ img }">
                                     <span class="fs-6 fw-semibold ms-2">${ name }</span>
@@ -48,13 +47,16 @@ const displayBlogPost = (data, name) => {
                                     <span class="fs-6 ms-1">${ total_view }</span>
                                 </div>
                                 <div>
-                                    <a class="stretched-link" onclick="detailsNews('${ _id }')" data-bs-toggle="modal" data-bs-target="#blogModal">Continue reading</a>
+                                    <button onclick="detailsNews('${ _id }')" type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">learn More</button>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>`;
         newsBox.appendChild(col);
+
     })
+    toggleLoader(false);
     // show categories item and categories name
     const itemNumberEl = document.getElementById('items-number');
     itemNumberEl.textContent = countPost.length;
@@ -68,12 +70,29 @@ const detailsNews = async (newsId) => {
 };
 
 const loadBlogs = (newDetails) => {
-    const modalTitle = document.getElementById('modalLabel');
-    modalTitle.innerText = ``;
-    modalTitle.innerText = newDetails.title;
-    const modalBody = document.getElementById('modal-body-content');
-    modalBody.innerHTML = `
-        <p>${ newDetails.details }</p>
-    `;
+    const { author, _id, details, image_url, thumbnail_url, title, total_view } = newDetails;
+    const { img, name, published_date } = author;
+    const modalBody = document.getElementById('modal-inner-body');
+    const card = document.createElement('div');
+    modalBody.innerHTML = '';
+    card.classList.add('card');
+    card.innerHTML = `
+        <img src="${ image_url }" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title fw-semibold py-2">${ title }</h5>
+            <p class="card-text">${ newDetails.details }</p>
+        </div>`;
+    modalBody.appendChild(card);
 };
+//====> add / remove spinner class function
+const toggleLoader = isLoading => {
+    const loaderSection = document.getElementById('display-loader');
+    if (isLoading) {
+        loaderSection.classList.remove('d-none');
+    } else {
+        loaderSection.classList.add('d-none');
+    }
+}
 
+
+loadAllBlogs('08');

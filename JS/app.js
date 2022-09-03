@@ -16,9 +16,9 @@ const displayCatagories = async () => {
         const li = document.createElement('li');
         li.classList.add('nav-item');
         li.innerHTML = `
-        <a class="btn btn-outline-warning fw-semibold" onclick="loadAllBlogs('${ item.category_id }','${ item.category_name }')">
+        <button class="btn btn-outline-warning fw-semibold" onclick="loadAllBlogs('${ item.category_id }','${ item.category_name }')">
         ${ item.category_name }
-        </a>`;
+        </button>`;
 
         AllItemsEl.appendChild(li);
     }
@@ -27,8 +27,4 @@ const displayCatagories = async () => {
 
 // Show all Catagories
 displayCatagories();
-
-// const loadAllBlogs = () => {
-//     console.log('clicked');
-// };
 
