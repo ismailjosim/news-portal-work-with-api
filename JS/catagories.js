@@ -46,11 +46,11 @@ const displayBlogPost = (data, name) => {
                                 <div>
                                     <img width="50" class="rounded-circle d-inline-block"
                                         src="${ img }">
-                                    <span class="fs-6 fw-semibold ms-2">${ name ? name : "Name not Found!" }</span>
+                                    <span class="fs-6 fw-semibold ms-2">${ name ? name : "No data available" }</span>
                                 </div>
                                 <div>
                                     <img src="images/eye.svg" width="25">
-                                    <span class="fs-6 ms-1">${ total_view ? total_view : "No View" }</span>
+                                    <span class="fs-6 ms-1">${ total_view ? total_view : "No data available" }</span>
                                 </div>
                                 <div>
                                     <button onclick="detailsNews('${ _id }')" type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">learn More</button>
@@ -101,17 +101,17 @@ const loadBlogs = (newDetails) => {
                 <p class="m-2 text-muted">0${ day } Days Ago</p>
                 <div>
                     <img width="50" class="rounded-circle d-inline-block" src="${ img }">
-                    <span class="fw-semibold ms-2">${ name ? name : "Name not Found!" }</span>
+                    <span class="fw-semibold ms-2">${ name ? name : "No data available" }</span>
                 </div>
                 <div>
                     <img src="images/eye.svg" width="25">
-                    <span class="fs-6 ms-1">${ total_view ? total_view : "No View" }</span>
+                    <span class="fs-6 ms-1">${ total_view ? total_view : "No data available" }</span>
                 </div>
 
             </div>
         <div class="card-body">
-            <h5 class="card-title fw-semibold py-2">${ title ? title : "title not Found!" }</h5>
-            <p class="card-text">${ details ? details : "Details not Found!" }</p>
+            <h5 class="card-title fw-semibold py-2">${ title ? title : "No data available" }</h5>
+            <p class="card-text">${ details ? details : "No data available" }</p>
         </div>
         `;
     modalBody.appendChild(card);
