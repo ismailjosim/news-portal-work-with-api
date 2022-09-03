@@ -6,16 +6,17 @@ const loadAllBlogs = id => {
         .then(data => displayBlogPost(data.data));
 }
 
-
 // display all blog
 const displayBlogPost = (data) => {
     let countPost = [];
     const newsBox = document.getElementById('news-box');
     newsBox.innerHTML = '';
-    for (const post of data) {
-        countPost.push(post);
+    data.forEach(news => {
+        // push new items
+        countPost.push(news);
+
         // Destructure
-        const { author, details, image_url, thumbnail_url, title, total_view } = post;
+        const { author, _id, details, image_url, thumbnail_url, title, total_view } = news;
         const { img, name, published_date } = author;
         const col = document.createElement('div');
         col.classList.add('col-md-12');
@@ -23,8 +24,7 @@ const displayBlogPost = (data) => {
                     <div
                         class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                         <div class="col-auto d-lg-block">
-                            <img src="${ thumbnail_url }" class="card-img-top"
-                                alt="">
+                            <img src="${ thumbnail_url }" class="card-img-top" alt="">
                         </div>
                         <div class="col p-4 d-flex flex-column position-static">
                             <strong class="d-inline-block mb-2 text-primary">World</strong>
@@ -42,39 +42,32 @@ const displayBlogPost = (data) => {
                                     <span class="fs-6 ms-1">${ total_view }</span>
                                 </div>
                                 <div>
-                                    <a class="stretched-link" onclick="loadBlogs('${ img }', '${ name }','${ title }','${ image_url }')" data-bs-toggle="modal" data-bs-target="#blogDetailsModal">Continue reading</a>
-
+                                    <a class="stretched-link" onclick="detailsNews('${ _id }')" data-bs-toggle="modal" data-bs-target="#blogModal">Continue reading</a>
                                 </div>
                             </div>
                         </div>
                     </div>`;
-
         newsBox.appendChild(col);
-    }
+    })
     // show categories item and categories name
     const itemNumberEl = document.getElementById('items-number');
     itemNumberEl.textContent = countPost.length;
 }
 
+const detailsNews = async (newsId) => {
+    const url = `https://openapi.programming-hero.com/api/news/${ newsId }`;
+    const res = await fetch(url);
+    const data = await res.json();
+    loadBlogs(data.data[0]);
+};
 
-
-//,'${ author }','${ total_view }'
-
-
-const loadBlogs = (img, name, title, image_url) => {
-    const modalBody = document.getElementById('modal-body-content');
-    modalBody.innerHTML = '';
+const loadBlogs = (newDetails) => {
     const modalTitle = document.getElementById('modalLabel');
-    const card = document.createElement('div');
-    card.classList.add('card');
-    modalTitle.innerText = title;
-
-    card.innerHTML = `
-    <img src="${ image_url }" class="card-img-top" alt="">
-    <div class="card-body">
-     </div>
-    `
-
-    modalBody.appendChild(card);
-}
+    modalTitle.innerText = ``;
+    modalTitle.innerText = newDetails.title;
+    const modalBody = document.getElementById('modal-body-content');
+    modalBody.innerHTML = `
+        <p>${ newDetails.details }</p>
+    `;
+};
 
